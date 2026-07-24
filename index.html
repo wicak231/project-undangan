@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paugeran Nikah: Wicak & Dyah</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        wedding: {
+                            gold: '#D4AF37',
+                            goldLight: '#F3E5AB',
+                            darkGold: '#AA7C11',
+                            wayangSogan: '#3B2314',
+                            wayangDark: '#1E120B',
+                            brownWood: '#2A180E',
+                            cream: '#FDFBF7',
+                            charcoal: '#1A1A1A'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Cormorant Garamond"', 'serif'],
+                        script: ['"Great Vibes"', 'cursive'],
+                        ethno: ['"Cinzel Decorative"', 'serif'],
+                        sans: ['"Montserrat"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- AOS (Animate on Scroll) CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        /* Pattern Batik Kawung Transparan */
+        .bg-batik-pattern {
+            background-image: radial-gradient(#D4AF37 0.75px, transparent 0.75px), radial-gradient(#D4AF37 0.75px, #FDFBF7 0.75px);
+            background-size: 28px 28px;
+            background-position: 0 0, 14px 14px;
+        }
+        .bg-batik-dark {
+            background-image: radial-gradient(#D4AF37 0.75px, transparent 0.75px), radial-gradient(#D4AF37 0.75px, #1E120B 0.75px);
+            background-size: 28px 28px;
+            background-position: 0 0, 14px 14px;
+        }
+        /* Style Bingkai Wayang */
+        .wayang-border {
+            border: 2px solid #D4AF37;
+            outline: 4px solid #3B2314;
+            box-shadow: inset 0 0 15px rgba(212, 175, 55, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-wedding-cream text-wedding-charcoal font-sans overflow-hidden bg-batik-pattern">
+
+    <!-- HTML5 Audio Element -->
+    <audio id="wedding-audio" loop preload="auto">
+        <source src="assets/audio2.mp3" type="audio/mpeg">
+        Browser Anda tidak mendukung elemen audio.
+    </audio>
+
+    <!-- Music Control Floating Widget -->
+    <div id="music-control" class="fixed bottom-6 right-6 z-50 flex flex-col items-center gap-2 hidden animate-bounce-slow">
+        <button id="btn-music-toggle" class="w-12 h-12 bg-wedding-wayangSogan border-2 border-wedding-gold text-wedding-goldLight hover:bg-wedding-wayangDark rounded-full flex items-center justify-center shadow-2xl transition-all duration-300 focus:outline-none" aria-label="Toggle Music">
+            <i id="music-icon" class="fas fa-compact-disc text-xl animate-spin-slow"></i>
+        </button>
+        <button id="btn-music-volume" class="w-10 h-10 bg-wedding-cream border border-wedding-gold text-wedding-wayangSogan hover:text-wedding-darkGold rounded-full flex items-center justify-center shadow-md transition-all duration-300 focus:outline-none" aria-label="Mute/Unmute">
+            <i id="volume-icon" class="fas fa-volume-up text-sm"></i>
+        </button>
+    </div>
+
+    <!-- 1. COVER SCREEN OVERLAY -->
+    <div id="cover-screen" class="fixed inset-0 z-[100] flex flex-col justify-between items-center text-center p-6 bg-cover bg-center transition-all duration-1000 ease-in-out" style="background-image: linear-gradient(rgba(30, 18, 11, 0.88), rgba(59, 35, 20, 0.92)), url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=1920');">
+        
+        <!-- Top Ornamen: Gunungan Wayang SVG -->
+        <div class="pt-6 text-wedding-goldLight uppercase tracking-[0.3em] text-sm flex flex-col items-center gap-2 animate-fade-in">
+            <svg class="w-16 h-20 fill-wedding-gold drop-shadow-[0_2px_8px_rgba(212,175,55,0.4)]" viewBox="0 0 100 130">
+                <path d="M50 5 L90 110 L80 120 L50 100 L20 120 L10 110 Z M50 20 L75 100 L50 85 L25 100 Z"/>
+            </svg>
+            <span class="block border-b border-wedding-gold/40 pb-2 max-w-xs mx-auto font-serif tracking-widest text-xs">Pawiwahan Ageng</span>
+        </div>
+
+        <!-- Center Couple names -->
+        <div class="my-auto space-y-3">
+            <p class="text-wedding-goldLight font-serif italic text-xl md:text-2xl tracking-widest">Serat Suraos Pawiwahan</p>
+            
+            <h1 class="text-wedding-goldLight font-script text-7xl md:text-8xl py-2 drop-shadow-lg leading-none select-none">
+                Wicak & Dyah
+            </h1>
+            
+            <!-- Divider Ornamen Jawa -->
+            <div class="flex items-center justify-center gap-3 py-2">
+                <div class="h-[1px] w-16 bg-wedding-gold"></div>
+                <i class="fa-solid fa-gem text-wedding-gold text-xs"></i>
+                <div class="h-[1px] w-16 bg-wedding-gold"></div>
+            </div>
+
+            <p class="text-wedding-cream/90 font-serif tracking-widest text-lg md:text-xl uppercase">
+                Minggu Pahing, 04 Oktober 2026
+            </p>
+            
+            <!-- Recipient name placeholder -->
+            <div id="guest-card" class="mt-6 bg-wedding-wayangDark/80 backdrop-blur-md border border-wedding-gold/40 rounded-xl px-6 py-4 max-w-sm mx-auto shadow-2xl scale-95 opacity-0 transition-all duration-700">
+                <p class="text-[11px] text-wedding-goldLight tracking-widest uppercase mb-1">Katur Bapa/Ibu/Sadherek</p>
+                
+                <!-- Nama Tamu -->
+                <h3 id="guest-name" class="text-white font-serif text-2xl font-bold tracking-wide italic">Tamu Undangan</h3>
+                
+                <!-- Alamat Tamu (Dinamis) -->
+                <p id="guest-address" class="text-xs text-wedding-goldLight/90 font-serif mt-1 italic hidden"></p>
+                
+                <p class="text-[10px] text-wedding-cream/60 mt-2">*Nyuwun pangapunten menawi wonten kalepatan serat asma/gelar</p>
+            </div>
+        </div>
+
+        <!-- Open button -->
+        <div class="pb-10">
+            <button id="btn-open-invitation" class="relative group bg-wedding-wayangSogan border-2 border-wedding-gold hover:bg-wedding-gold hover:text-wedding-wayangDark text-wedding-goldLight font-serif tracking-widest uppercase px-8 py-3.5 rounded-full shadow-2xl transition-all duration-300 transform hover:scale-105 flex items-center gap-3">
+                <span class="relative z-10 text-xs font-semibold">Buka Serat Undangan</span>
+                <i class="fas fa-envelope-open-text animate-pulse"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- MAIN APP CONTENT -->
+    <div id="main-content" class="hidden relative opacity-0 transition-opacity duration-1000">
+
+        <!-- NAVIGATION / PROGRESS BAR -->
+        <div class="fixed top-0 left-0 w-full h-[3px] bg-wedding-goldLight/30 z-[40]">
+            <div id="scroll-progress" class="h-full bg-wedding-gold w-0 transition-all duration-700"></div>
+        </div>
+
+        <!-- 2. HERO / MAIN HEADER -->
+        <header id="hero" class="relative min-h-screen flex items-center justify-center text-center bg-cover bg-center overflow-hidden" style="background-image: linear-gradient(rgba(253, 251, 247, 0.88), rgba(253, 251, 247, 0.95)), url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=1920');">
+            
+            <!-- Left & Right Gunungan Decorative Background Watermark -->
+            <div class="absolute -left-20 top-1/2 -translate-y-1/2 opacity-10 pointer-events-none hidden md:block">
+                <svg class="w-80 h-96 fill-wedding-wayangSogan" viewBox="0 0 100 130"><path d="M50 5 L90 110 L80 120 L50 100 L20 120 L10 110 Z"/></svg>
+            </div>
+            <div class="absolute -right-20 top-1/2 -translate-y-1/2 opacity-10 pointer-events-none hidden md:block">
+                <svg class="w-80 h-96 fill-wedding-wayangSogan" viewBox="0 0 100 130"><path d="M50 5 L90 110 L80 120 L50 100 L20 120 L10 110 Z"/></svg>
+            </div>
+
+            <div class="max-w-4xl px-4 z-10" data-aos="fade-up" data-aos-duration="1500">
+                
+                <!-- SVG Gunungan Kecil Header -->
+                <div class="flex justify-center mb-2">
+                    <svg class="w-10 h-14 fill-wedding-gold" viewBox="0 0 100 130">
+                        <path d="M50 5 L90 110 L80 120 L50 100 L20 120 L10 110 Z M50 20 L75 100 L50 85 L25 100 Z"/>
+                    </svg>
+                </div>
+
+                <div class="text-wedding-wayangSogan font-serif text-sm md:text-base tracking-[0.3em] uppercase mb-2 font-semibold">
+                    Rahayu Ingkang Siniwi
+                </div>
+                
+                <h1 class="text-wedding-wayangSogan font-script text-6xl md:text-8xl py-2 drop-shadow-sm">Wicak & Dyah</h1>
+                
+                <p class="text-wedding-gold font-serif italic text-2xl tracking-widest my-2">04 Oktober 2026</p>
+                <div class="h-[1px] w-24 bg-wedding-gold mx-auto my-4"></div>
+
+                <!-- Live Countdown Timer -->
+                <div id="countdown" class="grid grid-cols-4 gap-2 md:gap-4 max-w-xl mx-auto mt-6 font-serif">
+                    <div class="bg-white/80 border border-wedding-gold/40 rounded-xl p-3 md:p-4 shadow-md" data-aos="zoom-in" data-aos-delay="100">
+                        <span id="days" class="block text-2xl md:text-4xl font-bold text-wedding-wayangSogan">00</span>
+                        <span class="text-[10px] md:text-xs tracking-wider uppercase text-wedding-gold font-semibold">Dino</span>
+                    </div>
+                    <div class="bg-white/80 border border-wedding-gold/40 rounded-xl p-3 md:p-4 shadow-md" data-aos="zoom-in" data-aos-delay="200">
+                        <span id="hours" class="block text-2xl md:text-4xl font-bold text-wedding-wayangSogan">00</span>
+                        <span class="text-[10px] md:text-xs tracking-wider uppercase text-wedding-gold font-semibold">Jam</span>
+                    </div>
+                    <div class="bg-white/80 border border-wedding-gold/40 rounded-xl p-3 md:p-4 shadow-md" data-aos="zoom-in" data-aos-delay="300">
+                        <span id="minutes" class="block text-2xl md:text-4xl font-bold text-wedding-wayangSogan">00</span>
+                        <span class="text-[10px] md:text-xs tracking-wider uppercase text-wedding-gold font-semibold">Menit</span>
+                    </div>
+                    <div class="bg-white/80 border border-wedding-gold/40 rounded-xl p-3 md:p-4 shadow-md" data-aos="zoom-in" data-aos-delay="400">
+                        <span id="seconds" class="block text-2xl md:text-4xl font-bold text-wedding-wayangSogan">00</span>
+                        <span class="text-[10px] md:text-xs tracking-wider uppercase text-wedding-gold font-semibold">Detik</span>
+                    </div>
+                </div>
+
+                <!-- Scroll Down Prompt -->
+                <div class="mt-12 animate-bounce-slow">
+                    <p class="text-[10px] tracking-widest text-wedding-wayangSogan uppercase mb-1">Mirsani Pitutur</p>
+                    <i class="fas fa-chevron-down text-wedding-gold"></i>
+                </div>
+            </div>
+        </header>
+
+        <!-- 3. INTRO / QURAN QUOTE -->
+        <section id="intro" class="py-20 px-4 bg-white/70 text-center relative border-y border-wedding-gold/30">
+            <div class="max-w-3xl mx-auto" data-aos="fade-up" data-aos-duration="1000">
+                <p class="font-serif text-2xl text-wedding-wayangSogan mb-3">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</p>
+                <p class="font-serif text-wedding-wayangSogan text-lg italic mb-4">QS. Ar-Rum Ayat 21</p>
+                <p class="font-serif text-base md:text-lg leading-relaxed text-wedding-charcoal/80 italic max-w-2xl mx-auto">
+                    "Luwih dening agung kuwaos-Nipun Allah ingkang sampun ngitahaken garwa tinanggenah saking jinisnira piyambak, supados sira ngrasakaken katentremaning manah sarta katresnan lan sih kawelasan..."
+                </p>
+                <div class="w-16 h-[1px] bg-wedding-gold mx-auto mt-6"></div>
+            </div>
+        </section>
+
+        <!-- 4. COUPLE SECTION -->
+        <section id="couple" class="py-24 px-4 relative overflow-hidden">
+            <div class="max-w-6xl mx-auto relative z-10">
+                <div class="text-center mb-16" data-aos="fade-up">
+                    <h2 class="font-script text-wedding-gold text-5xl md:text-6xl mb-1">Mempelai Pawiwahan</h2>
+                    <p class="font-serif text-wedding-wayangSogan text-sm uppercase tracking-[0.2em]">Kados Kamajaya lan Dewi Ratih</p>
+                    <div class="h-[1px] w-24 bg-wedding-gold mx-auto mt-3"></div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 items-center max-w-4xl mx-auto">
+                    
+                    <!-- GROOM CARD -->
+                    <div class="text-center" data-aos="fade-right" data-aos-duration="1200">
+                        <div class="relative w-60 h-60 mx-auto mb-6">
+                            <div class="absolute inset-0 rounded-full border-2 border-wedding-gold p-1.5 shadow-xl">
+                                <div class="w-full h-full rounded-full border border-dashed border-wedding-wayangSogan"></div>
+                            </div>
+                            <div class="absolute inset-3 rounded-full overflow-hidden bg-wedding-goldLight/20">
+                                <img src="assets/wicak.JPG" alt="Muhamad Nur Wicaksono" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+                            </div>
+                        </div>
+                        
+                        <div class="inline-block bg-wedding-wayangSogan text-wedding-goldLight text-[10px] uppercase font-serif tracking-widest px-3 py-1 rounded-full mb-2">
+                            Raden Kamajaya
+                        </div>
+                        <h3 class="font-serif font-bold text-wedding-wayangSogan text-2xl md:text-3xl mb-1">Muhamad Nur Wicaksono, Amd. Kom.</h3>
+                        <p class="font-serif text-wedding-gold text-base tracking-wider mb-3">@wicakmn</p>
+                        <p class="text-xs md:text-sm text-wedding-charcoal/80 leading-relaxed">
+                            Putra Kapisan saking:<br>
+                            <span class="font-semibold text-wedding-wayangSogan">Bapak Sunaryo</span><br>
+                            &<br>
+                            <span class="font-semibold text-wedding-wayangSogan">Ibu Jumirah</span>
+                        </p>
+                        <div class="mt-4 flex justify-center gap-3">
+                            <a href="#" class="w-8 h-8 rounded-full border border-wedding-gold text-wedding-gold hover:bg-wedding-gold hover:text-white flex items-center justify-center transition-all"><i class="fab fa-instagram text-xs"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- BRIDE CARD -->
+                    <div class="text-center md:border-l md:border-wedding-goldLight/50 md:pl-12 lg:pl-20" data-aos="fade-left" data-aos-duration="1200">
+                        <div class="relative w-60 h-60 mx-auto mb-6">
+                            <div class="absolute inset-0 rounded-full border-2 border-wedding-gold p-1.5 shadow-xl">
+                                <div class="w-full h-full rounded-full border border-dashed border-wedding-wayangSogan"></div>
+                            </div>
+                            <div class="absolute inset-3 rounded-full overflow-hidden bg-wedding-goldLight/20">
+                                <img src="assets/dyah.JPG" alt="Dyah Ayu Novitasari" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+                            </div>
+                        </div>
+
+                        <div class="inline-block bg-wedding-wayangSogan text-wedding-goldLight text-[10px] uppercase font-serif tracking-widest px-3 py-1 rounded-full mb-2">
+                            Dewi Ratih
+                        </div>
+                        <h3 class="font-serif font-bold text-wedding-wayangSogan text-2xl md:text-3xl mb-1">Dyah Ayu Novitasari</h3>
+                        <p class="font-serif text-wedding-gold text-base tracking-wider mb-3">@dyah_xx</p>
+                        <p class="text-xs md:text-sm text-wedding-charcoal/80 leading-relaxed">
+                            Putri Kapindho saking:<br>
+                            <span class="font-semibold text-wedding-wayangSogan">Bapak Suripto</span><br>
+                            &<br>
+                            <span class="font-semibold text-wedding-wayangSogan">Ibu Marsini</span>
+                        </p>
+                        <div class="mt-4 flex justify-center gap-3">
+                            <a href="#" class="w-8 h-8 rounded-full border border-wedding-gold text-wedding-gold hover:bg-wedding-gold hover:text-white flex items-center justify-center transition-all"><i class="fab fa-instagram text-xs"></i></a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. EVENT DETAILS -->
+        <section id="event" class="py-24 px-4 bg-white/80 relative border-t border-wedding-gold/30">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16" data-aos="fade-up">
+                    <h2 class="font-script text-wedding-gold text-5xl md:text-6xl mb-1">Rancangan Pawiwahan</h2>
+                    <p class="font-serif text-wedding-wayangSogan text-sm uppercase tracking-[0.2em]">Wekdal lan Papan Halal</p>
+                    <div class="h-[1px] w-24 bg-wedding-gold mx-auto mt-3"></div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-16">
+                    
+                    <!-- AKAD CARD -->
+                    <div class="bg-wedding-cream rounded-2xl wayang-border p-8 shadow-xl relative overflow-hidden flex flex-col justify-between" data-aos="fade-up" data-aos-delay="100">
+                        <div class="text-center flex-grow">
+                            <div class="w-14 h-14 bg-wedding-wayangSogan text-wedding-goldLight rounded-full flex items-center justify-center mx-auto mb-4 border border-wedding-gold shadow-md">
+                                <i class="fa-solid fa-hands-holding-child text-xl"></i>
+                            </div>
+                            <h3 class="font-serif text-wedding-wayangSogan text-2xl font-bold uppercase tracking-wider mb-1">Panggih & IJAB AKAD</h3>
+                            <div class="h-[1px] w-12 bg-wedding-gold mx-auto mb-6"></div>
+                            
+                            <div class="space-y-3 font-serif text-wedding-charcoal/90 text-sm md:text-base mb-6">
+                                <div class="flex items-center justify-center gap-2">
+                                    <i class="fa-regular fa-calendar-check text-wedding-gold"></i>
+                                    <span>Minggu Pahing, 04 Oktober 2026</span>
+                                </div>
+                                <div class="flex items-center justify-center gap-2">
+                                    <i class="fa-regular fa-clock text-wedding-gold"></i>
+                                    <span>Tabuh 08.00 - 10.00 WIB</span>
+                                </div>
+                                <div class="flex items-start justify-center gap-2 max-w-xs mx-auto">
+                                    <i class="fa-solid fa-location-dot text-wedding-gold mt-1"></i>
+                                    <span>Dalem Mempelai Putri</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-center pt-2">
+                            <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Akad+Nikah+Wicak+%26+Dyah&dates=20261004T010000Z/20261004T030000Z&details=Selamat+datang+di+pernikahan+kami." target="_blank" class="inline-flex items-center gap-2 bg-wedding-wayangSogan hover:bg-wedding-brownWood text-wedding-goldLight font-serif px-6 py-2.5 rounded-full shadow-md transition-all text-xs tracking-wider uppercase border border-wedding-gold">
+                                <i class="far fa-calendar-alt"></i> Catet Wektu
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- RECEPTION CARD -->
+                    <div class="bg-wedding-wayangDark rounded-2xl border-2 border-wedding-gold p-8 shadow-xl text-wedding-cream relative overflow-hidden flex flex-col justify-between" data-aos="fade-up" data-aos-delay="200">
+                        <div class="text-center flex-grow">
+                            <div class="w-14 h-14 bg-wedding-gold/20 text-wedding-goldLight rounded-full flex items-center justify-center mx-auto mb-4 border border-wedding-gold">
+                                <i class="fa-solid fa-glass-water text-xl"></i>
+                            </div>
+                            <h3 class="font-serif text-wedding-goldLight text-2xl font-bold uppercase tracking-wider mb-1">Pahargyan / Resepsi</h3>
+                            <div class="h-[1px] w-12 bg-wedding-goldLight mx-auto mb-6"></div>
+                            
+                            <div class="space-y-3 font-serif text-wedding-cream/90 text-sm md:text-base mb-6">
+                                <div class="flex items-center justify-center gap-2">
+                                    <i class="fa-regular fa-calendar-check text-wedding-goldLight"></i>
+                                    <span>Minggu Pahing, 04 Oktober 2026</span>
+                                </div>
+                                <div class="flex items-center justify-center gap-2">
+                                    <i class="fa-regular fa-clock text-wedding-goldLight"></i>
+                                    <span>Tabuh 15.00 WIB - Selesai</span>
+                                </div>
+                                <div class="flex items-start justify-center gap-2 max-w-xs mx-auto">
+                                    <i class="fa-solid fa-location-dot text-wedding-goldLight mt-1"></i>
+                                    <span>Dalem Mempelai Kakung</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-center pt-2">
+                            <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Resepsi+Pernikahan+Wicak+%26+Dyah&dates=20261004T080000Z/20261004T120000Z&details=Selamat+datang+di+pernikahan+kami." target="_blank" class="inline-flex items-center gap-2 bg-wedding-gold hover:bg-wedding-darkGold text-wedding-wayangDark font-serif px-6 py-2.5 rounded-full shadow-md transition-all text-xs font-bold tracking-wider uppercase">
+                                <i class="far fa-calendar-alt"></i> Catet Wektu
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- MAP GOOGLE EMBED -->
+                <div class="max-w-4xl mx-auto rounded-2xl overflow-hidden shadow-2xl border-4 border-wedding-gold" data-aos="zoom-in" data-aos-duration="1000">
+                   <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4960.619374366105!2d110.61806048528335!3d-7.892064771840228!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a4b00386b6761%3A0x9db3cfd5b2433886!2sPutra%20Tunggal%20Farm%20%26%20Agriculture!5e1!3m2!1sid!2sid!4v1784917592578!5m2!1sid!2sid" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                </div>
+                <div class="text-center mt-6">
+                    <a href="https://maps.app.goo.gl/L8LhcWNU2nvDRTUP7" target="_blank" class="inline-flex items-center gap-2 bg-wedding-wayangSogan hover:bg-wedding-brownWood text-wedding-goldLight font-serif px-8 py-3.5 rounded-full shadow-lg transition-all uppercase tracking-widest text-xs border border-wedding-gold">
+                        <i class="fa-solid fa-map-location-dot"></i> Pituduh Datan (Google Maps)
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="bg-wedding-wayangDark text-wedding-cream py-16 px-4 text-center relative bg-batik-dark border-t-2 border-wedding-gold">
+            <div class="max-w-3xl mx-auto relative z-10 space-y-6" data-aos="fade-up" data-aos-duration="1500">
+                
+                <!-- Gunungan Footer Icon -->
+                <div class="flex justify-center">
+                    <svg class="w-12 h-16 fill-wedding-gold" viewBox="0 0 100 130">
+                        <path d="M50 5 L90 110 L80 120 L50 100 L20 120 L10 110 Z M50 20 L75 100 L50 85 L25 100 Z"/>
+                    </svg>
+                </div>
+
+                <p class="font-serif italic text-base md:text-lg text-wedding-goldLight max-w-xl mx-auto">
+                    "Matur nuwun sanget atas rawuh lan pangestunipun Bapa/Ibu/Sadherek ingkang minulya kanggo kaping kalih mempelai."
+                </p>
+                
+                <div class="space-y-1">
+                    <p class="text-xs uppercase tracking-[0.3em] text-wedding-gold">Ingkang Hangabekten</p>
+                    <p class="text-xs uppercase tracking-[0.2em] text-wedding-cream/70">Kulawarga Bapak Sunaryo & Kulawarga Bapak Suripto</p>
+                </div>
+
+                <div class="py-2">
+                    <h2 class="font-script text-wedding-gold text-5xl md:text-6xl tracking-normal">Wicak & Dyah</h2>
+                </div>
+
+                <div class="h-[1px] w-24 bg-wedding-gold/40 mx-auto"></div>
+
+                <p class="text-[10px] tracking-widest text-wedding-cream/50 uppercase">
+                    &copy; 2026 Wicak & Dyah. All Rights Reserved.
+                </p>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- AOS Script -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <!-- App Scripts & Countdown Timer Logic -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize AOS Animations
+            AOS.init();
+
+            // 1. Ambil Nama & Alamat Tamu dari URL Query Parameter
+            const urlParams = new URLSearchParams(window.location.search);
+            const guestParam = urlParams.get('to') || urlParams.get('n') || urlParams.get('p');
+            const addressParam = urlParams.get('addr') || urlParams.get('alamat') || urlParams.get('loc');
+
+            const guestCard = document.getElementById('guest-card');
+            const guestNameEl = document.getElementById('guest-name');
+            const guestAddrEl = document.getElementById('guest-address');
+
+            // Set Nama Tamu jika ada
+            if (guestParam && guestNameEl) {
+                guestNameEl.innerText = guestParam;
+            }
+
+            // Set Alamat Tamu jika ada (?addr=...)
+            if (addressParam && guestAddrEl) {
+                guestAddrEl.innerText = addressParam;
+                guestAddrEl.classList.remove('hidden'); // Tampilkan elemen alamat
+            }
+
+            if (guestCard) {
+                setTimeout(() => {
+                    guestCard.classList.remove('opacity-0', 'scale-95');
+                    guestCard.classList.add('opacity-100', 'scale-100');
+                }, 300);
+            }
+
+            // 2. Countdown Timer Logic (Target: 4 Oktober 2026, 08:00:00 WIB)
+            const targetDate = new Date('2026-10-04T08:00:00+07:00').getTime();
+
+            function updateCountdown() {
+                const now = new Date().getTime();
+                const distance = targetDate - now;
+
+                if (distance <= 0) {
+                    document.getElementById('days').innerText = '00';
+                    document.getElementById('hours').innerText = '00';
+                    document.getElementById('minutes').innerText = '00';
+                    document.getElementById('seconds').innerText = '00';
+                    return;
+                }
+
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                document.getElementById('days').innerText = String(days).padStart(2, '0');
+                document.getElementById('hours').innerText = String(hours).padStart(2, '0');
+                document.getElementById('minutes').innerText = String(minutes).padStart(2, '0');
+                document.getElementById('seconds').innerText = String(seconds).padStart(2, '0');
+            }
+
+            // Jalankan langsung dan perbarui setiap 1 detik
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
+
+            // 3. Audio Player Logic & Scroll Interactions
+            const audio = document.getElementById('wedding-audio');
+            const btnOpen = document.getElementById('btn-open-invitation');
+            const coverScreen = document.getElementById('cover-screen');
+            const mainContent = document.getElementById('main-content');
+            const musicControl = document.getElementById('music-control');
+            const btnMusicToggle = document.getElementById('btn-music-toggle');
+            const musicIcon = document.getElementById('music-icon');
+            const btnMusicVolume = document.getElementById('btn-music-volume');
+            const volumeIcon = document.getElementById('volume-icon');
+            const scrollProgress = document.getElementById('scroll-progress');
+
+            let isPlaying = false;
+
+            // Handle Scroll Progress Bar
+            window.addEventListener('scroll', function() {
+                const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+                const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrolled = (winScroll / height) * 100;
+                if (scrollProgress) {
+                    scrollProgress.style.width = scrolled + '%';
+                }
+            });
+
+            // Buka Undangan & Putar Musik
+            btnOpen.addEventListener('click', function() {
+                coverScreen.classList.add('opacity-0', 'pointer-events-none');
+                setTimeout(() => {
+                    coverScreen.classList.add('hidden');
+                    document.body.classList.remove('overflow-hidden');
+                }, 1000);
+
+                mainContent.classList.remove('hidden');
+                setTimeout(() => {
+                    mainContent.classList.remove('opacity-0');
+                    // Trigger AOS refresh agar animasi berfungsi saat main content muncul
+                    AOS.refresh();
+                }, 50);
+
+                musicControl.classList.remove('hidden');
+
+                // Play Audio
+                audio.play().then(() => {
+                    isPlaying = true;
+                }).catch(err => {
+                    console.log("Autoplay ditolak oleh browser: ", err);
+                });
+            });
+
+            // Toggle Play / Pause Audio
+            btnMusicToggle.addEventListener('click', function() {
+                if (isPlaying) {
+                    audio.pause();
+                    musicIcon.classList.remove('animate-spin-slow');
+                    musicIcon.classList.replace('fa-compact-disc', 'fa-play');
+                } else {
+                    audio.play();
+                    musicIcon.classList.add('animate-spin-slow');
+                    musicIcon.classList.replace('fa-play', 'fa-compact-disc');
+                }
+                isPlaying = !isPlaying;
+            });
+
+            // Toggle Mute / Unmute Audio
+            btnMusicVolume.addEventListener('click', function() {
+                audio.muted = !audio.muted;
+                if (audio.muted) {
+                    volumeIcon.classList.replace('fa-volume-up', 'fa-volume-mute');
+                } else {
+                    volumeIcon.classList.replace('fa-volume-mute', 'fa-volume-up');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

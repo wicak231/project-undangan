@@ -1,0 +1,111 @@
+/* Custom styles for Wedding Invitation */
+
+/* --- Custom Variables & Overrides --- */
+:root {
+    --gold: #C5A880;
+    --navy: #1A2F3B;
+    --cream: #FAF6F0;
+}
+
+/* --- Base Customizations --- */
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* --- Cover Transition Animations --- */
+#cover-screen.fade-out-up {
+    transform: translateY(-100%);
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Custom fade-ins for Cover screen elements */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+    animation: fadeIn 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-fade-in-delay {
+    animation: fadeIn 1s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+    opacity: 0;
+}
+
+/* --- Spin Slow Animation --- */
+@keyframes spinSlow {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+.animate-spin-slow {
+    animation: spinSlow 12s linear infinite;
+}
+
+/* --- Gentle Bounce Animation --- */
+@keyframes bounceSlow {
+    0%, 100% {
+        transform: translateY(0);
+        animation-timing-function: cubic-bezier(0.8,0,1,1);
+    }
+    50% {
+        transform: translateY(-10px);
+        animation-timing-function: cubic-bezier(0,0,0.2,1);
+    }
+}
+.animate-bounce-slow {
+    animation: bounceSlow 3s infinite;
+}
+
+/* --- Scrollbar styling for wishes wall --- */
+.custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: rgba(197, 168, 128, 0.1);
+    border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #C5A880;
+    border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #A0845B;
+}
+
+/* --- Map iframe border glow --- */
+iframe {
+    transition: all 0.5s ease;
+}
+iframe:hover {
+    box-shadow: 0 20px 25px -5px rgba(197, 168, 128, 0.3), 0 10px 10px -5px rgba(197, 168, 128, 0.2);
+}
+
+/* --- Glassmorphism overlay for beautiful inputs --- */
+input:focus, select:focus, textarea:focus {
+    box-shadow: 0 0 10px rgba(197, 168, 128, 0.2);
+}
+
+/* Timeline Custom alignment styles for small/medium devices */
+@media (max-width: 767px) {
+    .left-timeline {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+    }
+    .right-timeline {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+    }
+    .left-timeline .w-5/12, .right-timeline .w-5/12 {
+        width: 100% !important;
+    }
+}
