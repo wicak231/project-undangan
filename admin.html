@@ -39,14 +39,18 @@
 
         <!-- FORM 1: INPUT SINGLE -->
         <div id="form-single" class="space-y-4">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
                 <div>
                     <label class="block text-xs font-semibold text-stone-300 mb-1">Nama Tamu</label>
                     <input type="text" id="guest-single" placeholder="Contoh: Bapak Ahmad" class="w-full bg-stone-900 border border-stone-700 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-amber-500">
                 </div>
                 <div>
-                    <label class="block text-xs font-semibold text-stone-300 mb-1">Alamat / Keterangan (Opsional)</label>
+                    <label class="block text-xs font-semibold text-stone-300 mb-1">Alamat (Opsional)</label>
                     <input type="text" id="addr-single" placeholder="Contoh: di Tempat / Caruban" class="w-full bg-stone-900 border border-stone-700 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-amber-500">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-stone-300 mb-1">No. WhatsApp (Opsional)</label>
+                    <input type="text" id="phone-single" placeholder="Contoh: 08123456789" class="w-full bg-stone-900 border border-stone-700 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-amber-500">
                 </div>
             </div>
             <button id="btn-gen-single" class="w-full bg-amber-600 hover:bg-amber-500 text-stone-950 font-bold py-2.5 rounded-lg text-sm transition-all flex items-center justify-center gap-2">
@@ -57,8 +61,8 @@
         <!-- FORM 2: INPUT BULK (TEKS) -->
         <div id="form-bulk" class="space-y-4 hidden">
             <div>
-                <label class="block text-xs font-semibold text-stone-300 mb-1">Daftar Nama Tamu (Satu Nama Per Baris)</label>
-                <textarea id="guest-bulk" rows="6" placeholder="Contoh:&#10;Bapak Ahmad, di Tempat&#10;Ibu Susi, Caruban&#10;Sdr. Budi, Madiun" class="w-full bg-stone-900 border border-stone-700 rounded-lg p-3 text-xs font-mono focus:outline-none focus:border-amber-500"></textarea>
+                <label class="block text-xs font-semibold text-stone-300 mb-1">Daftar Nama Tamu (Format: Nama, Alamat, No. WA)</label>
+                <textarea id="guest-bulk" rows="6" placeholder="Format per baris: Nama, Alamat, No WA&#10;Contoh:&#10;Bapak Ahmad, di Tempat, 08123456789&#10;Ibu Susi, Caruban, 628987654321&#10;Sdr. Budi, Madiun" class="w-full bg-stone-900 border border-stone-700 rounded-lg p-3 text-xs font-mono focus:outline-none focus:border-amber-500"></textarea>
             </div>
             <button id="btn-gen-bulk" class="w-full bg-amber-600 hover:bg-amber-500 text-stone-950 font-bold py-2.5 rounded-lg text-sm transition-all flex items-center justify-center gap-2">
                 <i class="fa-solid fa-list-check"></i> Generate Semua Link
@@ -70,7 +74,7 @@
             <div class="bg-stone-900/60 border-2 border-dashed border-stone-700 rounded-xl p-6 text-center hover:border-amber-500/50 transition-colors">
                 <i class="fa-solid fa-file-excel text-4xl text-emerald-500 mb-3"></i>
                 <p class="text-xs text-stone-300 mb-2 font-semibold">Pilih atau Seret File Excel (.xlsx / .xls / .csv)</p>
-                <p class="text-[11px] text-stone-500 mb-4">*Kolom pertama (A) = Nama Tamu, Kolom kedua (B) = Alamat (Opsional)</p>
+                <p class="text-[11px] text-stone-500 mb-4">*Kolom A = Nama Tamu | Kolom B = Alamat | Kolom C = No. WA (Opsional)</p>
                 <input type="file" id="excel-file" accept=".xlsx, .xls, .csv" class="hidden">
                 <button onclick="document.getElementById('excel-file').click()" class="bg-stone-700 hover:bg-stone-600 text-stone-200 text-xs px-4 py-2 rounded-lg font-semibold border border-stone-600">
                     <i class="fa-solid fa-folder-open mr-1"></i> Pilih File Excel
@@ -125,6 +129,7 @@
                             <th class="p-3">No</th>
                             <th class="p-3">Nama Tamu</th>
                             <th class="p-3">Alamat</th>
+                            <th class="p-3">No. WA</th>
                             <th class="p-3 text-center">Aksi</th>
                         </tr>
                     </thead>
@@ -195,16 +200,17 @@
             document.getElementById('btn-gen-single').addEventListener('click', () => {
                 const name = document.getElementById('guest-single').value.trim();
                 const addr = document.getElementById('addr-single').value.trim();
+                const phone = document.getElementById('phone-single').value.trim();
                 const baseUrl = getCleanBaseUrl();
 
                 if (!name) return alert('Isi nama tamu terlebih dahulu!');
 
-                const { link, message } = createInvitation(baseUrl, name, addr);
+                const { link, message, waUrl } = createInvitation(baseUrl, name, addr, phone);
 
                 document.getElementById('res-name').innerText = name + (addr ? ` (${addr})` : '');
                 document.getElementById('res-link').value = link;
                 document.getElementById('res-message').value = message;
-                document.getElementById('res-wa-btn').href = `https://api.whatsapp.com/send?text=${encodeURIComponent(message)}`;
+                document.getElementById('res-wa-btn').href = waUrl;
 
                 resSingle.classList.remove('hidden');
             });
@@ -218,8 +224,9 @@
                 const listData = lines.map(line => {
                     const parts = line.split(',');
                     return {
-                        name: parts[0].trim(),
-                        addr: parts[1] ? parts[1].trim() : ''
+                        name: parts[0] ? parts[0].trim() : '',
+                        addr: parts[1] ? parts[1].trim() : '',
+                        phone: parts[2] ? parts[2].trim() : ''
                     };
                 });
 
@@ -244,11 +251,9 @@
                     const data = new Uint8Array(e.target.result);
                     const workbook = XLSX.read(data, { type: 'array' });
                     
-                    // Ambil Sheet Pertama
                     const firstSheetName = workbook.SheetNames[0];
                     const worksheet = workbook.Sheets[firstSheetName];
                     
-                    // Konversi Sheet ke JSON (Array of Array)
                     const rows = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
                     
                     if (!rows || rows.length === 0) {
@@ -260,10 +265,10 @@
                         if (row && row.length > 0 && row[0]) {
                             const name = String(row[0]).trim();
                             const addr = row[1] ? String(row[1]).trim() : '';
+                            const phone = row[2] ? String(row[2]).trim() : '';
                             
-                            // Abaikan baris header jika tulisan "Nama" / "Nama Tamu"
                             if (name.toLowerCase() !== 'nama' && name.toLowerCase() !== 'nama tamu') {
-                                listData.push({ name, addr });
+                                listData.push({ name, addr, phone });
                             }
                         }
                     });
@@ -285,8 +290,7 @@
 
                 listData.forEach((item, index) => {
                     if (item.name) {
-                        const { link, message } = createInvitation(baseUrl, item.name, item.addr);
-                        const waUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(message)}`;
+                        const { link, message, waUrl } = createInvitation(baseUrl, item.name, item.addr, item.phone);
 
                         const tr = document.createElement('tr');
                         tr.className = 'hover:bg-stone-800/50';
@@ -294,6 +298,7 @@
                             <td class="p-3 text-stone-500">${index + 1}</td>
                             <td class="p-3 font-semibold text-stone-200">${escapeHtml(item.name)}</td>
                             <td class="p-3 text-stone-400">${escapeHtml(item.addr || '-')}</td>
+                            <td class="p-3 text-stone-400 font-mono text-[11px]">${escapeHtml(item.phone || '-')}</td>
                             <td class="p-3 text-center space-x-1">
                                 <button onclick="copyDirect('${escapeJs(link)}')" title="Salin Link" class="bg-stone-800 hover:bg-stone-700 border border-stone-600 px-2 py-1 rounded text-[11px]">
                                     <i class="fa-regular fa-copy"></i> Link
@@ -320,13 +325,30 @@
                 return url;
             }
 
-            function createInvitation(baseUrl, name, addr) {
+            // Sanitasi Nomor Telepon ke Format Internasional (misal: 0812 -> 62812)
+            function formatPhoneNumber(phone) {
+                if (!phone) return '';
+                let cleaned = String(phone).replace(/\D/g, ''); // Hapus semua karakter non-angka
+                if (cleaned.startsWith('0')) {
+                    cleaned = '62' + cleaned.slice(1);
+                }
+                return cleaned;
+            }
+
+            function createInvitation(baseUrl, name, addr, phone) {
                 let link = `${baseUrl}/?to=${encodeURIComponent(name)}`;
                 if (addr) link += `&addr=${encodeURIComponent(addr)}`;
 
                 const addrText = addr ? `\n${addr}` : '';
                 const message = `Assalamu’alaikum Wr. Wb. / Salam Sejahtera\n\nKepada Yth. Bapak/Ibu/Saudara/i:\n*${name}*${addrText}\n\nTanpa mengurangi rasa hormat, perkenankan kami mengundang Bapak/Ibu/Saudara/i untuk menghadiri acara resepsi pernikahan kami (Wicak & Dyah).\n\nBerikut tautan undangan digital kami untuk informasi lengkap mengenai acara:\n${link}\n\nMerupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir dan memberikan doa restu.\n\nTerima Kasih.\n\n*Wicak & Dyah*`;
-                return { link, message };
+                
+                const cleanPhone = formatPhoneNumber(phone);
+                let waUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(message)}`;
+                if (cleanPhone) {
+                    waUrl = `https://api.whatsapp.com/send?phone=${cleanPhone}&text=${encodeURIComponent(message)}`;
+                }
+
+                return { link, message, waUrl };
             }
         });
 
