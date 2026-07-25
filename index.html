@@ -83,20 +83,24 @@
     </div>
 
     <!-- 1. COVER SCREEN OVERLAY -->
-    <div id="cover-screen" class="fixed inset-0 z-[100] flex flex-col justify-between items-center text-center p-6 bg-cover bg-center transition-all duration-1000 ease-in-out" style="background-image: linear-gradient(rgba(30, 18, 11, 0.88), rgba(59, 35, 20, 0.92)), url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=1920');">
+    <div id="cover-screen" class="fixed inset-0 z-[100] flex flex-col justify-between items-center text-center p-6 bg-cover bg-center transition-all duration-1000 ease-in-out" style="background-image: linear-gradient(rgba(30, 18, 11, 0.88), rgba(59, 35, 20, 0.92)), url('assets/IMG_0686.JPG');">
         
         <!-- Top Ornamen: Gunungan Wayang SVG -->
         <div class="pt-6 text-wedding-goldLight uppercase tracking-[0.3em] text-sm flex flex-col items-center gap-2 animate-fade-in">
-            <img src="assets/kayon.png" alt="Gunungan Wayang" class="w-30 h-20">
-            <span class="block border-b border-wedding-gold/40 pb-2 max-w-xs mx-auto font-serif tracking-widest text-xs">Pernikahan</span>
+            <!-- <img src="assets/2.png" alt="Gunungan Wayang" class="w-30 h-20"> -->
+            <!-- <span class="block border-b border-wedding-gold/40 pb-2 max-w-xs mx-auto font-serif italic tracking-widest text-xs">Invitation</span> -->
         </div>
-
+        
         <!-- Center Couple names -->
         <div class="my-auto space-y-3">
             <p class="text-wedding-goldLight font-serif italic text-xl md:text-2xl tracking-widest">Undangan Pernikahan</p>
-            
+            <!-- <div class="flex items-center justify-center gap-3 py-2">
+                <div class="h-[1px] w-16 bg-wedding-gold"></div>
+                <i class="fa-solid fa-gem text-wedding-gold text-xs"></i>
+                <div class="h-[1px] w-16 bg-wedding-gold"></div>
+            </div> -->
             <h1 class="text-wedding-goldLight font-script text-7xl md:text-8xl py-2 drop-shadow-lg leading-none select-none">
-                Wicak & Dyah
+                Wicak <br> & <br> Dyah
             </h1>
             
             <!-- Divider Ornamen Jawa -->
@@ -106,7 +110,7 @@
                 <div class="h-[1px] w-16 bg-wedding-gold"></div>
             </div>
 
-            <p class="text-wedding-cream/90 font-serif tracking-widest text-lg md:text-xl uppercase">
+            <p class="text-wedding-cream/90 font-bold tracking-widest text-lg md:text-xl uppercase">
                 Minggu, 04 Oktober 2026
             </p>
             
@@ -142,8 +146,7 @@
         </div>
 
         <!-- 2. HERO / MAIN HEADER -->
-        <header id="hero" class="relative min-h-screen flex items-center justify-center text-center bg-cover bg-center overflow-hidden" style="background-image: linear-gradient(rgba(253, 251, 247, 0.88), rgba(253, 251, 247, 0.95)), url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=1920');">
-            
+        <header id="hero" class="relative min-h-screen flex items-center justify-center text-center bg-cover bg-center overflow-hidden" style="background-image: linear-gradient(rgba(253, 251, 247, 0.65), rgba(253, 251, 247, 0.95)), url('assets/IMG_002.jpg');">
             <!-- Left & Right Gunungan Decorative Background Watermark -->
             <div class="absolute -left-20 top-1/2 -translate-y-1/2 opacity-10 pointer-events-none hidden md:block">
                 <svg class="w-80 h-96 fill-wedding-wayangSogan" viewBox="0 0 100 130"><path d="M50 5 L90 110 L80 120 L50 100 L20 120 L10 110 Z"/></svg>
@@ -156,40 +159,39 @@
                 
                 <!-- SVG Gunungan Kecil Header -->
                 <div class="flex justify-center mb-2">
-                    <svg class="w-10 h-14 fill-wedding-gold" viewBox="0 0 100 130">
-                        <path d="M50 5 L90 110 L80 120 L50 100 L20 120 L10 110 Z M50 20 L75 100 L50 85 L25 100 Z"/>
-                    </svg>
+                <img src="assets/1.png" alt="Gunungan Wayang" class="w-30 h-20">
+
                 </div>
 
                 <div class="text-wedding-wayangSogan font-serif text-sm md:text-base tracking-[0.3em] uppercase mb-2 font-semibold">
                     Undangan Pernikahan
                 </div>
-                
+                <br><br><br><br><br><br><br><br>
                 <h1 class="text-wedding-wayangSogan font-script text-6xl md:text-8xl py-2 drop-shadow-sm">Wicak & Dyah</h1>
                 
                 <p class="text-wedding-gold font-serif italic text-2xl tracking-widest my-2">04 Oktober 2026</p>
                 <div class="h-[1px] w-24 bg-wedding-gold mx-auto my-4"></div>
 
                 <!-- Live Countdown Timer -->
-                <div id="countdown" class="grid grid-cols-4 gap-2 md:gap-4 max-w-xl mx-auto mt-6 font-serif">
+                <div id="countdown" class="grid grid-cols-4 gap-2 md:gap-4 max-w-xl mx-auto mt-6 font-sans">
                     <div class="bg-white/80 border border-wedding-gold/40 rounded-xl p-3 md:p-4 shadow-md" data-aos="zoom-in" data-aos-delay="100">
-                        <span id="days" class="block text-2xl md:text-4xl font-bold text-wedding-wayangSogan">00</span>
+                        <span id="days" class="block text-2xl md:text-4xl font-['arial'] text-wedding-wayangSogan">00</span>
                         <span class="text-[10px] md:text-xs tracking-wider uppercase text-wedding-gold font-semibold">Hari</span>
                     </div>
                     <div class="bg-white/80 border border-wedding-gold/40 rounded-xl p-3 md:p-4 shadow-md" data-aos="zoom-in" data-aos-delay="200">
-                        <span id="hours" class="block text-2xl md:text-4xl font-bold text-wedding-wayangSogan">00</span>
+                        <span id="hours" class="block text-2xl md:text-4xl font-['arial'] text-wedding-wayangSogan">00</span>
                         <span class="text-[10px] md:text-xs tracking-wider uppercase text-wedding-gold font-semibold">Jam</span>
                     </div>
                     <div class="bg-white/80 border border-wedding-gold/40 rounded-xl p-3 md:p-4 shadow-md" data-aos="zoom-in" data-aos-delay="300">
-                        <span id="minutes" class="block text-2xl md:text-4xl font-bold text-wedding-wayangSogan">00</span>
+                        <span id="minutes" class="block text-2xl md:text-4xl font-['arial'] text-wedding-wayangSogan">00</span>
                         <span class="text-[10px] md:text-xs tracking-wider uppercase text-wedding-gold font-semibold">Menit</span>
                     </div>
                     <div class="bg-white/80 border border-wedding-gold/40 rounded-xl p-3 md:p-4 shadow-md" data-aos="zoom-in" data-aos-delay="400">
-                        <span id="seconds" class="block text-2xl md:text-4xl font-bold text-wedding-wayangSogan">00</span>
+                        <span id="seconds" class="block text-2xl md:text-4xl font-['arial'] text-wedding-wayangSogan">00</span>
                         <span class="text-[10px] md:text-xs tracking-wider uppercase text-wedding-gold font-semibold">Detik</span>
                     </div>
                 </div>
-
+                    <br><br><br><br>
                 <!-- Scroll Down Prompt -->
                 <div class="mt-12 animate-bounce-slow">
                     <p class="text-[10px] tracking-widest text-wedding-wayangSogan uppercase mb-1">Gulir ke Bawah</p>
@@ -238,13 +240,13 @@
                         <h3 class="font-serif font-bold text-wedding-wayangSogan text-2xl md:text-3xl mb-1">Muhamad Nur Wicaksono, Amd. Kom.</h3>
                         <p class="font-serif text-wedding-gold text-base tracking-wider mb-3">@wicakmn</p>
                         <p class="text-xs md:text-sm text-wedding-charcoal/80 leading-relaxed">
-                            Putra Pertama dari:<br>
-                            <span class="font-semibold text-wedding-wayangSogan">Bapak Sunaryo</span><br>
-                            &<br>
-                            <span class="font-semibold text-wedding-wayangSogan">Ibu Jumirah</span>
+                            Putra dari:<br>
+                            <span class="font-semibold text-wedding-wayangSogan">Bapak Sunaryo & Ibu Jumirah</span><br>
+
+                            <span class="font-semibold text-wedding-wayangSogan">Nglipar Kidul, Nglipar, Nglipar, Gunungkidul <br> Daerah Istimewa Yogyakarta</span>
                         </p>
                         <div class="mt-4 flex justify-center gap-3">
-                            <a href="#" class="w-8 h-8 rounded-full border border-wedding-gold text-wedding-gold hover:bg-wedding-gold hover:text-white flex items-center justify-center transition-all"><i class="fab fa-instagram text-xs"></i></a>
+                            <a href="https://www.instagram.com/wicakmn/" class="w-8 h-8 rounded-full border border-wedding-gold text-wedding-gold hover:bg-wedding-gold hover:text-white flex items-center justify-center transition-all"><i class="fab fa-instagram text-xs"></i></a>
                         </div>
                     </div>
 
@@ -266,12 +268,11 @@
                         <p class="font-serif text-wedding-gold text-base tracking-wider mb-3">@dyah_xx</p>
                         <p class="text-xs md:text-sm text-wedding-charcoal/80 leading-relaxed">
                             Putri Pertama dari:<br>
-                            <span class="font-semibold text-wedding-wayangSogan">Bapak Suripto</span><br>
-                            &<br>
-                            <span class="font-semibold text-wedding-wayangSogan">Ibu Marsini</span>
+                            <span class="font-semibold text-wedding-wayangSogan">Bapak Suripto & Ibu Marsini</span><br>
+                            <span class="font-semibold text-wedding-wayangSogan">Suru Kidul, Hargomulyo, Gedangsari, Gunungkidul <br> Daerah Istimewa Yogyakarta</span>
                         </p>
                         <div class="mt-4 flex justify-center gap-3">
-                            <a href="#" class="w-8 h-8 rounded-full border border-wedding-gold text-wedding-gold hover:bg-wedding-gold hover:text-white flex items-center justify-center transition-all"><i class="fab fa-instagram text-xs"></i></a>
+                            <a href="https://www.instagram.com/dyah_ay_/" class="w-8 h-8 rounded-full border border-wedding-gold text-wedding-gold hover:bg-wedding-gold hover:text-white flex items-center justify-center transition-all"><i class="fab fa-instagram text-xs"></i></a>
                         </div>
                     </div>
 
@@ -299,18 +300,18 @@
                             <h3 class="font-serif text-wedding-wayangSogan text-2xl font-bold uppercase tracking-wider mb-1">AKAD NIKAH</h3>
                             <div class="h-[1px] w-12 bg-wedding-gold mx-auto mb-6"></div>
                             
-                            <div class="space-y-3 font-serif text-wedding-charcoal/90 text-sm md:text-base mb-6">
+                            <div class="space-y-3 font-bold text-wedding-charcoal/90 text-sm md:text-base mb-6">
+                                <i class="fa-regular fa-calendar-check text-wedding-gold"></i>
                                 <div class="flex items-center justify-center gap-2">
-                                    <i class="fa-regular fa-calendar-check text-wedding-gold"></i>
                                     <span>Minggu, 04 Oktober 2026</span>
                                 </div>
+                                <i class="fa-regular fa-clock text-wedding-gold"></i>
                                 <div class="flex items-center justify-center gap-2">
-                                    <i class="fa-regular fa-clock text-wedding-gold"></i>
-                                    <span>Pukul 08.00 - 10.00 WIB</span>
+                                    <span>Pukul 08.00 WIB</span>
                                 </div>
+                                <i class="fa-solid fa-location-dot text-wedding-gold mt-1"></i>
                                 <div class="flex items-start justify-center gap-2 max-w-xs mx-auto">
-                                    <i class="fa-solid fa-location-dot text-wedding-gold mt-1"></i>
-                                    <span>Kediaman Mempelai Wanita</span>
+                                    <span>(Kediaman Mempelai Wanita) <br>Suru Kidul, Hargomulyo, Gedangsari, Gunungkidul, Daerah Istimewa Yogyakarta</span>
                                 </div>
                             </div>
                         </div>
@@ -330,18 +331,18 @@
                             <h3 class="font-serif text-wedding-goldLight text-2xl font-bold uppercase tracking-wider mb-1">RESEPSI PERNIKAHAN</h3>
                             <div class="h-[1px] w-12 bg-wedding-goldLight mx-auto mb-6"></div>
                             
-                            <div class="space-y-3 font-serif text-wedding-cream/90 text-sm md:text-base mb-6">
+                            <div class="space-y-3 font-bold text-wedding-cream/90 text-sm md:text-base mb-6">
+                                <i class="fa-regular fa-calendar-check text-wedding-goldLight"></i>
                                 <div class="flex items-center justify-center gap-2">
-                                    <i class="fa-regular fa-calendar-check text-wedding-goldLight"></i>
                                     <span>Minggu, 04 Oktober 2026</span>
                                 </div>
+                                <i class="fa-regular fa-clock text-wedding-goldLight"></i>
                                 <div class="flex items-center justify-center gap-2">
-                                    <i class="fa-regular fa-clock text-wedding-goldLight"></i>
                                     <span>Pukul 15.00 WIB - Selesai</span>
                                 </div>
+                                <i class="fa-solid fa-location-dot text-wedding-goldLight mt-1"></i>
                                 <div class="flex items-start justify-center gap-2 max-w-xs mx-auto">
-                                    <i class="fa-solid fa-location-dot text-wedding-goldLight mt-1"></i>
-                                    <span>Kediaman Mempelai Pria</span>
+                                    <span>(Kediaman Mempelai Pria) <br>Nglipar Kidul, Nglipar, Nglipar, Gunungkidul, Daerah Istimewa Yogyakarta</span>
                                 </div>
                             </div>
                         </div>
@@ -372,9 +373,7 @@
                 
                 <!-- Gunungan Footer Icon -->
                 <div class="flex justify-center">
-                    <svg class="w-12 h-16 fill-wedding-gold" viewBox="0 0 100 130">
-                        <path d="M50 5 L90 110 L80 120 L50 100 L20 120 L10 110 Z M50 20 L75 100 L50 85 L25 100 Z"/>
-                    </svg>
+                    <img src="assets/2.png" alt="Gunungan Wayang" class="w-30 h-20">
                 </div>
 
                 <p class="font-serif italic text-base md:text-lg text-wedding-goldLight max-w-xl mx-auto">
