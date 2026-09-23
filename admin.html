@@ -145,7 +145,7 @@
             const baseUrlInput = document.getElementById('base-url');
             
             // Set Base URL Otomatis
-            let currentUrl = window.location.href.split('?')[0].replace('admin.html', '').replace('generator.html', '');
+            let currentUrl = window.location.href.split('?')[0].replace('admin.html', '').replace('generator.html', '').replace(/\/admin\/?$/, '');
             if (window.location.protocol === 'file:') {
                 if (!currentUrl.endsWith('index.html')) {
                     currentUrl = currentUrl.endsWith('/') ? currentUrl + 'index.html' : currentUrl + '/index.html';
